@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Sepetim";
+}
+@using MVC_SuperMarket.Models.Classes
+@model List<Product>
+<div class="col-md-12">
+    <div class="row">
+        <div class="block">
+            <div class="block-heading" style="display:flex">
+                <div class="main-text h2 col-md-6">
+                    Sepetim
+                </div>
+                <div class="form-group col-md-5" style="display:flex">
+                    <div class="col-md-6">
+                        <label for="paymentTypes">Satın Alma Yöntemi Seçiniz:</label>
+                    </div>
+                    <form action="/Cart/SalesComplete" method="post" role="form">
+                        <div class="form-group col-md-6">
+                            <select class="form-control" name="PaymentTypeId" sel>
+                                @foreach (PaymentTypes paymentType in ViewBag.PaymentTypes)
+                                {
+                                    <option value="@paymentType.PaymentTypeId">@paymentType.PaymentTypeName</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tamamla</button>
+                    </form>
+                </div>
+                <div class="block-controls">
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <th>Kategori</th>
+                                    <th>Miktar</th>
+                                    <th>Fiyat</th>
+                                    <th>Sepetten Çıkar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (Product product in Model)
+                                {
+                                    <tr>
+                                        <td onclick="productClick(@product.ProductId)">@product.ProductName</td>
+
+                                        @if (product.CategoryName == null)
+                                        {
+                                            <td onclick="productClick(@product.ProductId)">
+                                                <span class="label label-primary"></span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td onclick="productClick(@product.ProductId)">
+                                                <span class="label label-primary">@product.CategoryName</span>
+                                            </td>
+                                        }
+                                        <td onclick="productClick(@product.ProductId)">@product.Quantity</td>
+                                        <td onclick="productClick(@product.ProductId)">@product.Price</td>
+                                        <td><a href="#" data-id="@product.ProductId" class="btn btn-danger rounded CartRemove">Sepetten Çıkar</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(".CartRemove").click(function () {
+            var id = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                url: "/Cart/CartRemove/" + id,
+                success: function myfunction() {
+                    alert("Ürün sepetten çıkarıldı.");
+                    location.reload(true);
+                },
+                error: function myfunction() {
+                    alert("Ürün sepetten çıkarılırken hata oluştu!")
+                }
+            });
+        });
+    </script>
+}

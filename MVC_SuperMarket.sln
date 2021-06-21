@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1500
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_SuperMarket", "MVC_SuperMarket\MVC_SuperMarket.csproj", "{AAF4A9FD-0D66-4EC8-8BA4-54A7B6CD64AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAF4A9FD-0D66-4EC8-8BA4-54A7B6CD64AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF4A9FD-0D66-4EC8-8BA4-54A7B6CD64AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF4A9FD-0D66-4EC8-8BA4-54A7B6CD64AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF4A9FD-0D66-4EC8-8BA4-54A7B6CD64AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {283250A0-4EE5-4365-BE20-4E830D45BCC6}
+	EndGlobalSection
+EndGlobal
